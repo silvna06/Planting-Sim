@@ -2,8 +2,8 @@ import pygame
 import images
 from enum import Enum
 
-pygame.init()  # Initializing pygame
-pygame.font.init()  # Initializing font
+pygame.init()  #initializing pygame
+pygame.font.init()  #initializing font
 
 class GameState(Enum):
     MAIN_SCREEN = 1
@@ -37,7 +37,7 @@ class Owner:
         else:
             self.money -= 10
 
-# Set up the screen
+#screen and colours
 screen = pygame.display.set_mode((800, 600))
 colour1 = (53,94,59)
 colour2 = (135, 206, 235)
@@ -56,10 +56,10 @@ text_7 = font1.render('YES!', True, (117, 173, 80))
 pygame.display.set_caption("Planting Sim")
 pygame.display.set_icon(images.icon)
 
-# Load and play background music
+#loads and play background music
 audio = "music.mp3"
 pygame.mixer.music.load(audio)
-pygame.mixer.music.play(-1)
+#pygame.mixer.music.play(-1)
 
 
 running = True
@@ -69,7 +69,7 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if current_state == GameState.MAIN_SCREEN and images.click_rect1.collidepoint(event.pos):
-                current_state = GameState.SEED1_SCREEN
+                current_state = GameState.SHOP2_SCREEN
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_5.collidepoint(event.pos):
                 current_state = GameState.SEED2_SCREEN
             elif current_state == GameState.SEED2_SCREEN and images.click_rect2_5.collidepoint(event.pos):
@@ -132,7 +132,7 @@ while running:
             screen.blit(images.moon, (650, -50))
             pygame.display.flip()
             pygame.time.delay(3000)
-        current_state = GameState.SHOP1_SCREEN  # Transition back to SEED1_SCREEN after displaying the images
+        current_state = GameState.SHOP1_SCREEN  #changes into a different display after loop
     
     elif current_state == GameState.PLANT2_SCREEN:
         for img in images.plant2:
@@ -264,7 +264,8 @@ while running:
     elif current_state == GameState.SHOP2_SCREEN:
         screen.fill(colour2)
         screen.blit(images.plant_stand, (0, 0))
-    
+        screen.blit(images.plant1, images.plant_rect1)
+
     pygame.display.flip()
 
 pygame.quit()

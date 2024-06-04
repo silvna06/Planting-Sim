@@ -4,11 +4,10 @@ import os
 pygame.init()
 
 def load_image(image_path):
-    # Get the directory where the script is located
-    current_path = os.path.dirname(__file__)  # This gets the directory of the current script
-    # Construct the full path to the image file
+    # get the directory where the script is located
+    current_path = os.path.dirname(__file__)  # gets the directory
     image_path = os.path.join(current_path, 'image', image_path)
-    return pygame.image.load(image_path)
+    return pygame.image.load(image_path) #loads image onto pygame
 
 icon = load_image("plant_icon.png")
 title_plant = load_image("opening_plant.png")
@@ -111,6 +110,16 @@ plant8_4 = load_image("plant8_4.png")
 plant8_4 = pygame.transform.scale(plant8_4, (200, 200)) 
 plant8 = [plant8_1, plant8_2, plant8_3, plant8_4]
 
+plant1 = pygame.transform.scale(plant1_4, (150, 150))
+plant2 = pygame.transform.scale(plant2_4, (100, 100))
+plant3 = pygame.transform.scale(plant3_4, (200, 200))
+plant4 = pygame.transform.scale(plant4_4, (200, 200))
+plant5 = pygame.transform.scale(plant5_4, (200, 200))
+plant6 = pygame.transform.scale(plant6_4, (200, 200))
+plant7 = pygame.transform.scale(plant7_4, (200, 200))
+plant8 = pygame.transform.scale(plant8_4, (200, 200))
+
+
 sun = load_image("sun.png")
 moon = load_image("moon.png")
 watering_can = load_image("watering_can.png")
@@ -136,3 +145,5 @@ click_rect2_5 = left_arrow.get_rect()
 click_rect2_5.topright = (450, 475)
 click_rect3 = button.get_rect()
 click_rect3.topleft = (280,475)
+plant_rect1 = plant1.get_rect()
+plant_rect1.topleft = (45,275)
