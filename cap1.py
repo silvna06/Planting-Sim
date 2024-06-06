@@ -25,17 +25,24 @@ correct_plant = True
 
 class Owner:   
     def __init__(self, money):
-        self.__money = 20
+        self.__money = money
 
     @property
     def money(self):
         return self.__money
     
-    def total_money(self, money):
+    @money.setter
+    def money(self, value):
+        self.__money = value
+    
+    def total_money(self):
         if correct_plant:
             self.money += 10
         else:
             self.money -= 10
+owner = Owner(20)
+
+sell_plants = {"order1":1, "order2":2, "order3":3, "order4":4, "order5":5, "order6":6, "order7":7, "order8":8}
 
 #screen and colours
 screen = pygame.display.set_mode((800, 600))
@@ -92,6 +99,8 @@ while running:
                 current_state = GameState.PLANT8_SCREEN
             elif current_state == GameState.SHOP1_SCREEN and images.click_rect3.collidepoint(event.pos):
                 current_state = GameState.SHOP2_SCREEN
+            elif current_state == GameState.SHOP2_SCREEN and images.plant_rect1.collidepoint(event.pos):
+                correct_plant = True
 
     if current_state == GameState.MAIN_SCREEN:
         screen.fill(colour1)
@@ -263,10 +272,18 @@ while running:
 
     elif current_state == GameState.SHOP2_SCREEN:
         screen.fill(colour2)
+        screen.blit(images.npc, (155,20))
         screen.blit(images.plant_stand, (0, 0))
         screen.blit(images.plant1, images.plant_rect1)
+        screen.blit(images.plant2, images.plant_rect2)
+        screen.blit(images.plant3, images.plant_rect3)
+        screen.blit(images.plant4, images.plant_rect4)
+        screen.blit(images.plant5, images.plant_rect5)
+        screen.blit(images.plant6, images.plant_rect6)
+        screen.blit(images.plant7, images.plant_rect7)
+        screen.blit(images.plant8, images.plant_rect8)
+        screen.blit(images.plant7, (400, 75))
 
     pygame.display.flip()
 
 pygame.quit()
-
