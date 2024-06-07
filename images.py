@@ -110,15 +110,28 @@ plant8_4 = load_image("plant8_4.png")
 plant8_4 = pygame.transform.scale(plant8_4, (200, 200)) 
 plant8 = [plant8_1, plant8_2, plant8_3, plant8_4]
 
+def image_loader():
+    plants = {'plant1': plant1_4,
+    'plant2': plant2_4,
+    'plant3': plant3_4,
+    'plant4': plant4_4,
+    'plant5': plant5_4,
+    'plant6': plant6_4,
+    'plant7': plant7_4,
+    'plant8': plant8_4}
+    shop_plants = {}
+    for key,value in plants.items():
+        shop_plants[key] = pygame.transform.scale(value, (150, 150))
+    return shop_plants
+
 plant1 = pygame.transform.scale(plant1_4, (150, 150))
 plant2 = pygame.transform.scale(plant2_4, (150, 150))
 plant3 = pygame.transform.scale(plant3_4, (150, 150))
-plant4 = pygame.transform.scale(plant4_4, (150, 150))
+plant4 = pygame.transform.scale(plant4_4, (150, 150)) 
 plant5 = pygame.transform.scale(plant5_4, (150, 150))
 plant6 = pygame.transform.scale(plant6_4, (150, 150))
 plant7 = pygame.transform.scale(plant7_4, (150, 150))
 plant8 = pygame.transform.scale(plant8_4, (150, 150))
-
 
 sun = load_image("sun.png")
 moon = load_image("moon.png")

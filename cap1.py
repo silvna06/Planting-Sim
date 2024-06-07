@@ -1,6 +1,7 @@
 import pygame
 import images
 from enum import Enum
+from images import image_loader
 
 pygame.init()  #initializing pygame
 pygame.font.init()  #initializing font
@@ -42,7 +43,8 @@ class Owner:
             self.money -= 10
 owner = Owner(20)
 
-sell_plants = {"order1":1, "order2":2, "order3":3, "order4":4, "order5":5, "order6":6, "order7":7, "order8":8}
+sell_plants = {"plant1":1, "plant2":2, "plant3":3, "plant4":4, "plant5":5, "plant6":6, "plant7":7, "plant8":8}
+new_plants = image_loader()
 
 #screen and colours
 screen = pygame.display.set_mode((800, 600))
@@ -99,8 +101,6 @@ while running:
                 current_state = GameState.PLANT8_SCREEN
             elif current_state == GameState.SHOP1_SCREEN and images.click_rect3.collidepoint(event.pos):
                 current_state = GameState.SHOP2_SCREEN
-            elif current_state == GameState.SHOP2_SCREEN and images.plant_rect1.collidepoint(event.pos):
-                correct_plant = True
 
     if current_state == GameState.MAIN_SCREEN:
         screen.fill(colour1)
@@ -282,7 +282,9 @@ while running:
         screen.blit(images.plant6, images.plant_rect6)
         screen.blit(images.plant7, images.plant_rect7)
         screen.blit(images.plant8, images.plant_rect8)
-        screen.blit(images.plant7, (400, 75))
+        for key,value in sell_plants.items():
+            plant = new_plants[key]
+            screen.blit(plant, (400, 75))
 
     pygame.display.flip()
 
