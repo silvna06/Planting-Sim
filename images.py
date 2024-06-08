@@ -4,8 +4,8 @@ import os
 pygame.init()
 
 def load_image(image_path):
-    # get the directory where the script is located
-    current_path = os.path.dirname(__file__)  # gets the directory
+    #get the directory where the script is located
+    current_path = os.path.dirname(__file__)  #gets the directory
     image_path = os.path.join(current_path, 'image', image_path)
     return pygame.image.load(image_path) #loads image onto pygame
 
@@ -38,7 +38,7 @@ plant1_3 = load_image("plant1_3.png")
 plant1_3 = pygame.transform.scale(plant1_3, (200, 200))
 plant1_4 = load_image("plant1_4.png")
 plant1_4 = pygame.transform.scale(plant1_4, (200, 200))
-plant1 = [plant1_1, plant1_2, plant1_3, plant1_4]
+plants_1 = [plant1_1, plant1_2, plant1_3, plant1_4]
 
 plant2_1 = load_image("plant2_1.png")
 plant2_1 = pygame.transform.scale(plant2_1, (200, 200))
@@ -48,7 +48,7 @@ plant2_3 = load_image("plant2_3.png")
 plant2_3 = pygame.transform.scale(plant2_3, (200, 200))
 plant2_4 = load_image("plant2_4.png")
 plant2_4 = pygame.transform.scale(plant2_4, (200, 200))
-plant2 = [plant2_1, plant2_2, plant2_3, plant2_4]
+plants_2 = [plant2_1, plant2_2, plant2_3, plant2_4]
 
 plant3_1 = load_image("plant3_1.png")
 plant3_1 = pygame.transform.scale(plant3_1, (200, 200))
@@ -58,7 +58,7 @@ plant3_3 = load_image("plant3_3.png")
 plant3_3 = pygame.transform.scale(plant3_3, (200, 200))
 plant3_4 = load_image("plant3_4.png")
 plant3_4 = pygame.transform.scale(plant3_4, (200, 200))
-plant3 = [plant3_1, plant3_2, plant3_3, plant3_4]
+plants_3 = [plant3_1, plant3_2, plant3_3, plant3_4]
 
 plant4_1 = load_image("plant4_1.png")
 plant4_1 = pygame.transform.scale(plant4_1, (200, 200))
@@ -68,7 +68,7 @@ plant4_3 = load_image("plant4_3.png")
 plant4_3 = pygame.transform.scale(plant4_3, (200, 200))
 plant4_4 = load_image("plant4_4.png")
 plant4_4 = pygame.transform.scale(plant4_4, (200, 200)) 
-plant4 = [plant4_1, plant4_2, plant4_3, plant4_4]
+plants_4 = [plant4_1, plant4_2, plant4_3, plant4_4]
 
 plant5_1 = load_image("plant5_1.png")
 plant5_1 = pygame.transform.scale(plant5_1, (200, 200))
@@ -78,7 +78,7 @@ plant5_3 = load_image("plant5_3.png")
 plant5_3 = pygame.transform.scale(plant5_3, (200, 200))
 plant5_4 = load_image("plant5_4.png")
 plant5_4 = pygame.transform.scale(plant5_4, (200, 200)) 
-plant5 = [plant5_1, plant5_2, plant5_3, plant5_4]
+plants_5 = [plant5_1, plant5_2, plant5_3, plant5_4]
 
 plant6_1 = load_image("plant6_1.png")
 plant6_1 = pygame.transform.scale(plant6_1, (200, 200))
@@ -88,7 +88,7 @@ plant6_3 = load_image("plant6_3.png")
 plant6_3 = pygame.transform.scale(plant6_3, (200, 200))
 plant6_4 = load_image("plant6_4.png")
 plant6_4 = pygame.transform.scale(plant6_4, (200, 200)) 
-plant6 = [plant6_1, plant6_2, plant6_3, plant6_4]
+plants_6 = [plant6_1, plant6_2, plant6_3, plant6_4]
 
 plant7_1 = load_image("plant7_1.png")
 plant7_1 = pygame.transform.scale(plant7_1, (200, 200))
@@ -98,7 +98,7 @@ plant7_3 = load_image("plant7_3.png")
 plant7_3 = pygame.transform.scale(plant7_3, (200, 200))
 plant7_4 = load_image("plant7_4.png")
 plant7_4 = pygame.transform.scale(plant7_4, (200, 200)) 
-plant7 = [plant7_1, plant7_2, plant7_3, plant7_4]
+plants_7 = [plant7_1, plant7_2, plant7_3, plant7_4]
 
 plant8_1 = load_image("plant8_1.png")
 plant8_1 = pygame.transform.scale(plant8_1, (200, 200))
@@ -108,16 +108,16 @@ plant8_3 = load_image("plant8_3.png")
 plant8_3 = pygame.transform.scale(plant8_3, (200, 200))
 plant8_4 = load_image("plant8_4.png")
 plant8_4 = pygame.transform.scale(plant8_4, (200, 200)) 
-plant8 = [plant8_1, plant8_2, plant8_3, plant8_4]
+plants_8 = [plant8_1, plant8_2, plant8_3, plant8_4]
 
 def image_loader():
-    plants = {'plant1': plant1_4,
-    'plant2': plant2_4,
+    plants = {'plant6': plant6_4,
     'plant3': plant3_4,
-    'plant4': plant4_4,
-    'plant5': plant5_4,
-    'plant6': plant6_4,
     'plant7': plant7_4,
+    'plant5': plant5_4,
+    'plant4': plant4_4,
+    'plant1': plant1_4,
+    'plant2': plant2_4,
     'plant8': plant8_4}
     shop_plants = {}
     for key,value in plants.items():
