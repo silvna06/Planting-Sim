@@ -58,6 +58,7 @@ screen = pygame.display.set_mode((800, 600))
 colour1 = (53,94,59)
 colour2 = (135, 206, 235)
 colour3 = (50, 64, 123)
+colour4 = (117, 173, 80)
 
 font1 = pygame.font.Font('MinecraftBold.otf', 70)
 font2 = pygame.font.Font('MinecraftBold.otf', 50)
@@ -76,6 +77,7 @@ f_rank = font3.render(f"F", True, "red")
 c_rank = font3.render(f"C", True, "grey48")
 b_rank = font3.render(f"B", True, "grey48")
 a_rank = font3.render(f"A", True, "grey48")
+thank_you = font2.render("Thank you for playing!", True, colour4)
 
 pygame.display.set_caption("Planting Sim")
 pygame.display.set_icon(images.icon)
@@ -83,7 +85,7 @@ pygame.display.set_icon(images.icon)
 #loads and play background music
 audio = "music.mp3"
 pygame.mixer.music.load(audio)
-#pygame.mixer.music.play(-1)
+pygame.mixer.music.play(-1)
 
 running = True
 while running:
@@ -234,6 +236,7 @@ while running:
         if owner.money >= 100:
             screen.blit(images.s_rank, (330,20))
             screen.blit(final_currency, (65,250))
+            screen.blit(thank_you, (65,350))
             screen.blit(images.button, images.click_rect4)
             screen.blit(images.button, images.click_rect5)
             screen.blit(text_8, (130,490))
@@ -241,6 +244,7 @@ while running:
         elif owner.money > 80:
             screen.blit(a_rank, (330,0))
             screen.blit(final_currency, (75,250))
+            screen.blit(thank_you, (65,350))
             screen.blit(images.button, images.click_rect4)
             screen.blit(images.button, images.click_rect5)
             screen.blit(text_8, (130,490))
@@ -248,6 +252,7 @@ while running:
         elif owner.money > 50:
             screen.blit(b_rank, (350,0))
             screen.blit(final_currency, (75,250))
+            screen.blit(thank_you, (65,350))
             screen.blit(images.button, images.click_rect4)
             screen.blit(images.button, images.click_rect5)
             screen.blit(text_8, (130,490))
@@ -255,6 +260,7 @@ while running:
         elif owner.money > 20:
             screen.blit(c_rank, (330,0))
             screen.blit(final_currency, (75,250))
+            screen.blit(thank_you, (65,350))
             screen.blit(images.button, images.click_rect4)
             screen.blit(images.button, images.click_rect5)
             screen.blit(text_8, (130,490))
@@ -262,6 +268,7 @@ while running:
         else:
             screen.blit(f_rank, (350,0))
             screen.blit(final_currency, (75,250))
+            screen.blit(thank_you, (65,350))
             screen.blit(images.button, images.click_rect4)
             screen.blit(images.button, images.click_rect5)
             screen.blit(text_8, (130,490))
