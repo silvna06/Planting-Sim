@@ -10,7 +10,7 @@ Reason: Used to learn more about the built in functions for my code
 Prompt: Enum Module in Python
 Reason: To understand more on how enum works as a module
 
-Prompt: Os Module in Python
+Prompt: OS Module in Python
 Reason: To learn about the module and how to use it
 
 Prompt: Callable Function in Python
@@ -52,7 +52,7 @@ Reason: Special ranking at the end of the game
 # Sprites
 Sprite: Various plants at growing stages
 Link: https://pop-shop-packs.itch.io/wild-plants-pixel-asset-pack 
-Reason: The basis of the game, used to during cutscene and at shop
+Reason: The basis of the game, used during cutscene and at shop
 
 # Music
 Video: Background Music
