@@ -58,3 +58,8 @@ Reason: The basis of the game, used to during cutscene and at shop
 Video: Background Music
 Link: https://www.youtube.com/watch?v=hxtNkm4dMbM 
 Reason: Create ambience in game
+
+# Font
+Website: FontSpace
+Link: https://www.fontspace.com/category/minecraft
+Reason: Needed a custom font 
