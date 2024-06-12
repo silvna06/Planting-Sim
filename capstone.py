@@ -2,10 +2,11 @@ import pygame
 import images
 from enum import Enum
 
-pygame.init()  #initializing pygame
-pygame.font.init()  #initializing font
+pygame.init()  # initializing pygame
+pygame.font.init()  # initializing font
 
 class GameState(Enum):
+    # serves as differnt display screens to change between them when needed
     MAIN_SCREEN = 1
     SEED1_SCREEN = 2
     SEED2_SCREEN = 3
@@ -21,9 +22,10 @@ class GameState(Enum):
     SHOP2_SCREEN = 13
     END_SCREEN = 14
 
-current_state = GameState.MAIN_SCREEN
+current_state = GameState.MAIN_SCREEN # starting display of the game
 
-class Owner:   
+class Owner: 
+    # class to organize the shop's earnings and display of total currency  
     def __init__(self, money):
         self.__money = money
 
@@ -46,20 +48,23 @@ class Owner:
 
     def __str__(self):
         return f"{self.money}"
-owner = Owner(20)
+owner = Owner(20) # starting value of money for the player
 
 sell_plants = [images.plant_rect6, images.plant_rect3, images.plant_rect7, images.plant_rect5, images.plant_rect4, images.plant_rect1, images.plant_rect2, images.plant_rect8]
+# list to check whether the player clicked the right plant
 new_plants = images.image_loader()
 plant_list = list(new_plants.keys())
 plant_index = 0
+# loads in the order of plants for the shop, starts from the first inext of the dictionary
 
-#screen and colours
+# screen and colours
 screen = pygame.display.set_mode((800, 600))
 colour1 = (53,94,59)
 colour2 = (135, 206, 235)
 colour3 = (50, 64, 123)
 colour4 = (117, 173, 80)
 
+# fonts with sizes and texts
 font1 = pygame.font.Font('MinecraftBold.otf', 70)
 font2 = pygame.font.Font('MinecraftBold.otf', 50)
 font3 = pygame.font.SysFont('Arial', 200)
@@ -79,10 +84,11 @@ b_rank = font3.render(f"B", True, "grey48")
 a_rank = font3.render(f"A", True, "grey48")
 thank_you = font2.render("Thank you for playing!", True, colour4)
 
+# labelling the window, adding an icon
 pygame.display.set_caption("Planting Sim")
 pygame.display.set_icon(images.icon)
 
-#loads and play background music
+# loads and play background music
 audio = "music.mp3"
 pygame.mixer.music.load(audio)
 pygame.mixer.music.play(-1)
@@ -93,6 +99,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            # obtains the user's input as a left click 
+            # displays based on the conditions it has met
             if current_state == GameState.MAIN_SCREEN and images.click_rect1.collidepoint(event.pos):
                 current_state = GameState.SEED1_SCREEN
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_5.collidepoint(event.pos):
@@ -101,53 +109,49 @@ while running:
                 current_state = GameState.SEED1_SCREEN
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_1.collidepoint(event.pos):
                 current_state = GameState.PLANT1_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_2.collidepoint(event.pos):
                 current_state = GameState.PLANT2_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_3.collidepoint(event.pos):
                 current_state = GameState.PLANT3_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED1_SCREEN and images.click_rect2_4.collidepoint(event.pos):
                 current_state = GameState.PLANT4_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED2_SCREEN and images.click_rect2_1.collidepoint(event.pos):
                 current_state = GameState.PLANT5_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED2_SCREEN and images.click_rect2_2.collidepoint(event.pos):
                 current_state = GameState.PLANT6_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED2_SCREEN and images.click_rect2_3.collidepoint(event.pos):
                 current_state = GameState.PLANT7_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SEED2_SCREEN and images.click_rect2_4.collidepoint(event.pos):
                 current_state = GameState.PLANT8_SCREEN
-                plant_clicked = True
             elif current_state == GameState.SHOP1_SCREEN and images.click_rect3.collidepoint(event.pos):
                 current_state = GameState.SHOP2_SCREEN
-                plant_index = 0  # reset for SHOP2_SCREEN (playability)
+                plant_index = 0
             elif current_state == GameState.SHOP2_SCREEN:
-                correct_plant = False
+                correct_plant = True
+                # loop checks if rectangle clicked is the same as the rectangle in list
                 for rect in sell_plants:
                     if rect.collidepoint(event.pos):
                         correct_plant = (rect == sell_plants[plant_index])
+                # updates the total money based on boolean statement
                 owner.total_money(correct_plant)
                 plant_index += 1
                 if plant_index >= len(plant_list):
-                    current_state = GameState.END_SCREEN
+                    current_state = GameState.END_SCREEN # end of selling at shop
             elif current_state == GameState.END_SCREEN and images.click_rect4.collidepoint(event.pos):
-                current_state = GameState.MAIN_SCREEN
+                current_state = GameState.MAIN_SCREEN # reset for MAIN_SCREEN (playability)
             elif current_state == GameState.END_SCREEN and images.click_rect5.collidepoint(event.pos):
-                running = False
+                running = False # closes game
 
 
     if current_state == GameState.MAIN_SCREEN:
+        # menu screen of the game
         screen.fill(colour1)
         screen.blit(text_1, (15, 50))
         screen.blit(text_2, (125, 500))
         screen.blit(images.title_plant, images.click_rect1)
 
     elif current_state == GameState.SEED1_SCREEN:
+        # selection of seeds pt 1
         screen.fill(colour1)
         screen.blit(text_3, (125, 50))
         screen.blit(images.seed1, images.click_rect2_1)
@@ -157,6 +161,7 @@ while running:
         screen.blit(images.right_arrow, images.click_rect2_5)
 
     elif current_state == GameState.SEED2_SCREEN:
+        # selection of seeds pt 2
         screen.fill(colour1)
         screen.blit(text_3, (125, 50))
         screen.blit(images.seed5, images.click_rect2_1)
@@ -167,6 +172,7 @@ while running:
 
     elif current_state in [GameState.PLANT1_SCREEN, GameState.PLANT2_SCREEN, GameState.PLANT3_SCREEN, GameState.PLANT4_SCREEN, GameState.PLANT5_SCREEN, GameState.PLANT6_SCREEN, GameState.PLANT7_SCREEN, GameState.PLANT8_SCREEN]:
 
+        #assigning the list based on the display screen
         if current_state == GameState.PLANT1_SCREEN:
             plant_images = images.plants_1
         elif current_state == GameState.PLANT2_SCREEN:
@@ -185,6 +191,8 @@ while running:
             plant_images = images.plants_8
 
         for img in plant_images:
+            # runs through a change of images over a small period of time
+            # ends when loops is finished
             screen.fill(colour2)
             screen.blit(text_4, (220, 450))
             screen.blit(images.sun, (-140, -140))
@@ -198,7 +206,7 @@ while running:
             screen.blit(images.moon, (650, -50))
             pygame.display.flip()
             pygame.time.delay(3000)
-        current_state = GameState.SHOP1_SCREEN  #changes into a different display after loop
+        current_state = GameState.SHOP1_SCREEN  # changes into SHOP1 display after loop
 
     elif current_state == GameState.SHOP1_SCREEN:
         screen.fill(colour1)
@@ -207,6 +215,7 @@ while running:
         screen.blit(images.coin_pile, (300,160))
         screen.blit(images.button,images.click_rect3)
         screen.blit(text_7, (300, 487))
+        # confirmation screen to continue
 
     elif current_state == GameState.SHOP2_SCREEN:
         screen.fill(colour2)
@@ -223,14 +232,17 @@ while running:
         balance = font2.render(f"{owner}", True, "black")
         screen.blit(images.coin, (710,0))
         if owner.money >= 0:
+            # changes display of money based on positive of negative value
             screen.blit(balance, (630,5))
         else:
             screen.blit(balance, (590,5))
         plant_key = plant_list[plant_index]
         plant_image = new_plants[plant_key]
         screen.blit(plant_image, (400, 75))
+        # displays a specific plant one at a time
     
     else:
+        # end screen, displays ranking based on total money
         screen.fill(colour1)
         final_currency = font2.render(f"Your total is {owner} coins.", True, (117, 173, 80))
         if owner.money >= 100:
@@ -274,6 +286,6 @@ while running:
             screen.blit(text_8, (130,490))
             screen.blit(text_9,(490,490)) 
 
-    pygame.display.flip()
+    pygame.display.flip() # updates the screen every time it changes to a different display
 
 pygame.quit()
