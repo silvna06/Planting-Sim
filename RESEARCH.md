@@ -7,6 +7,10 @@ Website: Pygame Docs
 Link: https://www.pygame.org/docs/
 Reason: Used to learn more about the built in functions for my code
 
+Video: How to Make a Menu Screen
+Link: https://www.youtube.com/watch?v=GMBqjxcKogA
+Reason: To make clickable images/buttons
+
 Prompt: Enum Module in Python
 Reason: To understand more on how enum works as a module
 
